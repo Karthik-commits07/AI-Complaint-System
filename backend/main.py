@@ -203,13 +203,15 @@ VALUES
 
 @app.get("/complaints")
 def get_complaints():
-    result = connection.execute(
+    with engine.connect() as db:
+     result = db.execute(
         text("SELECT * FROM customers ORDER BY created_at DESC;")
     )
+    rows = result.fetchall()
 
     complaints = []
 
-    for row in result:
+    for row in rows:
         complaints.append({
             "id": row.id,
             "customer_name": row.customer_name,
