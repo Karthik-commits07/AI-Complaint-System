@@ -102,6 +102,24 @@ connection = engine.connect()
 
 print("Database Connected Successfully!")
 
+# Create customers table if it does not exist
+with engine.begin() as db:
+    db.execute(text("""
+        CREATE TABLE IF NOT EXISTS customers (
+            id SERIAL PRIMARY KEY,
+            customer_name VARCHAR(255) NOT NULL,
+            product_name VARCHAR(255) NOT NULL,
+            batch_number VARCHAR(255) NOT NULL,
+            complaint TEXT NOT NULL,
+            status VARCHAR(50) DEFAULT 'Pending',
+            category VARCHAR(100),
+            priority VARCHAR(50),
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+    """))
+
+print("Customers table ready!")
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
