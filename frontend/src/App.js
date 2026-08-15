@@ -8,7 +8,7 @@ import ComplaintTable from "./components/ComplaintTable";
 import Charts from "./components/Charts";
 import AIAssistant from "./components/AIAssistant";
 
-const API_URL = "http://127.0.0.1:8000";
+const API_URL = "https://ai-complaint-system-2-s713.onrender.com";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
