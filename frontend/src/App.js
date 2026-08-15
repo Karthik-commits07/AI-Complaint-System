@@ -36,7 +36,7 @@ function App() {
 
   const fetchComplaints = async () => {
     try {
-      const response = await fetch("http://127.0.0.1:8000/complaints");
+      const response = await fetch(`${API_URL}/complaints`);
 
       if (!response.ok) {
         throw new Error("Failed to fetch complaints");
