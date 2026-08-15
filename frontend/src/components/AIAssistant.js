@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+const API_URL = "https://ai-complaint-system-2-s713.onrender.com";
 function AIAssistant({ onComplaintSaved }) {
   const [complaintText, setComplaintText] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
@@ -17,7 +17,7 @@ function AIAssistant({ onComplaintSaved }) {
 
     try {
       const response = await fetch(
-        "http://127.0.0.1:8000/ai/analyze-complaint",
+        `${API_URL}/ai/analyze-complaint`,
         {
           method: "POST",
           headers: {
@@ -39,7 +39,7 @@ function AIAssistant({ onComplaintSaved }) {
 
       // Save AI result to PostgreSQL
       const saveResponse = await fetch(
-        "http://127.0.0.1:8000/complaint",
+        `${API_URL}/complaint`,
         {
           method: "POST",
           headers: {
@@ -96,7 +96,7 @@ function AIAssistant({ onComplaintSaved }) {
       formData.append("file", selectedFile);
 
       const response = await fetch(
-        "http://127.0.0.1:8000/ai/analyze-file",
+        `${API_URL}/ai/analyze-file`,
         {
           method: "POST",
           body: formData,
