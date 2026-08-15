@@ -184,7 +184,7 @@ connection strings - Other private credentials
 
 ## 👨‍💻 Author
 
-**Karthik-commits07**
+**M.Murali Karthik**
 
 ## 📄 License
 
